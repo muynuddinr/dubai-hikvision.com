@@ -1,0 +1,236 @@
+---
+import banner1 from "../assets/images/banner/Banner-1.webp";
+import banner2 from "../assets/images/banner/Banner-2.webp";
+import banner3 from "../assets/images/banner/Banner-3.webp";
+import banner4 from "../assets/images/banner/mobile1.webp";
+import banner5 from "../assets/images/banner/mobile2.webp";
+import banner6 from "../assets/images/banner/mobile3.webp";
+import service1 from "/src/assets/images/darkfighter.png";
+import service2 from "/src/assets/images/tandem.png";
+import service3 from "/src/assets/images/color.png";
+import service4 from "/src/assets/images/Acuense.png";
+
+export const slides = [
+  {
+    id: 1,
+    imgMain: banner1,
+    imgMobile: banner4,
+    title: "Hero 1",
+  },
+  {
+    id: 2,
+    imgMain: banner2,
+    imgMobile: banner5,
+    title: "Hero 2",  
+  },
+  {
+    id: 3,
+    imgMain: banner3,
+    imgMobile: banner6,
+    title: "Hero 3",
+  },
+];
+
+export const services = [
+  {
+    icon: service1,
+    title: "DarkFighter Technology",
+    shortDescription:
+      "DarkFighter technology enables clear, full-color imaging in low light.",
+    description:
+      "DarkFighter technology enhances low-light imaging with advanced sensors and processing for clear, full-color visuals.",
+    link: "/productsnew",
+  },
+  {
+    icon: service2,
+    title: "TandemVu Technology",
+    shortDescription:
+      "TandemVu combines fixed and PTZ lenses for efficient dual surveillance.",
+    description:
+      "TandemVu technology integrates fixed and PTZ lenses in one camera, delivering efficient, dual-purpose surveillance for enhanced security and monitoring.",
+    link: "/productsnew",
+  },
+  {
+    icon: service3,
+    title: "ColorVu Technology",
+    shortDescription:
+      "ColorVu Technology enables full-color surveillance for enhanced security.",
+    description:
+      "ColorVu Technology by Hikvision delivers full-color, 24/7 surveillance with high-sensitivity sensors and built-in lighting for enhanced low-light security monitoring.",
+    link: "/productsnew",
+  },
+  {
+    icon: service4,
+    title: "Acusense technology",
+    shortDescription:
+      "AcuSense Technology uses AI to detect humans and vehicles accurately.",
+    description:
+      "AcuSense Technology by Hikvision uses AI to accurately detect humans and vehicles, reducing false alarms and enhancing surveillance efficiency.",
+    link: "/productsnew",
+  },
+];
+
+
+---
+<div class="relative">
+  <!-- Banner Section -->
+  <div class="group relative w-full h-[300px] md:h-[430px] overflow-hidden">
+    {
+      slides.map((slide, index) => (
+        <div
+          class={`slide absolute w-full h-full opacity-0 transition-opacity duration-1000 ease-in-out ${
+            index === 0 ? "active opacity-100" : ""
+          }`}
+          data-key={slide.id}
+        >
+          <img
+            src={slide.imgMobile.src}
+            alt={slide.title}
+            class="w-full h-full object-cover md:hidden"
+          />
+          <img
+            src={slide.imgMain.src}
+            alt={slide.title}
+            class="w-full h-full object-cover hidden md:block"
+          />
+        </div>
+      ))
+    }
+
+    <!-- Navigation Buttons -->
+    <button
+      id="prevBtn"
+      class="nav-arrow prev-arrow absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg border border-gray-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+    >
+      <svg
+        class="w-6 h-6 text-gray-800"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"></path>
+      </svg>
+    </button>
+    <button
+      id="nextBtn"
+      class="nav-arrow next-arrow absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg border border-gray-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+    >
+      <svg
+        class="w-6 h-6 text-gray-800"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Service Cards Section -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 -mt-12 relative z-30">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        services.map((service) => (
+          <div class="block group" onclick="toggleDescription(event)">
+            <div class="bg-white p-8 rounded-2xl shadow-xl text-center transform hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl border border-gray-100 hover:border-green-100 relative overflow-hidden h-[250px]">
+              <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-400 to-blue-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+              <div class="flex items-center justify-center mb-4">
+                <img
+                  src={service.icon.src}
+                  alt={service.title}
+                  class="w-32 h-auto object-contain"
+                />
+              </div>
+              <h3 class="text-2xl font-semibold mb-4 text-gray-800 group-hover:text-cyan-600 transition-colors duration-300">
+                {service.title}
+              </h3>
+              <p class="text-gray-600 group-hover:text-gray-800 transition-colors duration-300">
+                {service.shortDescription}
+              </p>
+              <p class="text-gray-600 group-hover:text-gray-800 transition-colors duration-300 absolute bottom-0 left-0 right-0 p-6 bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 text-justify">
+                {service.description}
+              </p>
+              <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-green-400 transform origin-right scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<script>
+  // Carousel functionality
+  let currentSlide = 0;
+  let intervalId: number;
+
+  function changeSlide(direction = "next") {
+    const slides = document.querySelectorAll(".slide");
+    const totalSlides = slides.length;
+
+    if (direction === "next") {
+      currentSlide = (currentSlide + 1) % totalSlides;
+    } else if (direction === "prev") {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    }
+
+    slides.forEach((slide, index) => {
+      slide.classList.toggle("active", index === currentSlide);
+      slide.classList.toggle("opacity-0", index !== currentSlide);
+      slide.classList.toggle("opacity-100", index === currentSlide);
+    });
+  }
+
+  // Activate the first slide on load
+  document.addEventListener("DOMContentLoaded", () => {
+    const slides = document.querySelectorAll(".slide");
+    if (slides.length > 0) {
+      slides[0].classList.add("active", "opacity-100");
+    }
+  });
+
+  // Start the carousel
+  if (typeof window !== "undefined") {
+    intervalId = window.setInterval(() => changeSlide("next"), 5000);
+
+    // Clear interval on page unload
+    window.addEventListener("unload", () => {
+      window.clearInterval(intervalId);
+    });
+
+    // Navigation button event listeners
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        window.clearInterval(intervalId);
+        changeSlide("prev");
+        intervalId = window.setInterval(() => changeSlide("next"), 5000);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        window.clearInterval(intervalId);
+        changeSlide("next");
+        intervalId = window.setInterval(() => changeSlide("next"), 5000);
+      });
+    }
+  }
+
+  // Toggle description on mobile
+  function toggleDescription(event: MouseEvent) {
+    const card = (event.currentTarget as HTMLElement).querySelector("div");
+    const description = card?.querySelector("p:last-child");
+    description?.classList.toggle("translate-y-full");
+  }
+</script>

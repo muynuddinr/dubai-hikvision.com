@@ -1,0 +1,114 @@
+---
+import '@fontsource/poppins/300.css';
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
+
+
+---
+
+<section class="bg-gradient-to-br from-[#f1f7ff] to-[#e6f0ff] pt-16 pb-10 relative overflow-hidden" style="font-family: 'Poppins', sans-serif;">
+    <div class="container mx-auto px-4 md:px-6 lg:px-8 py-8">
+        <div class="flex flex-col lg:flex-row gap-12 items-center">
+            <!-- Text content -->
+            <div class="lg:w-1/2 animate-fade-in-left">
+                <h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#32869f] to-[#4fb3d9] bg-clip-text text-transparent mb-6 leading-tight animate-bounce-in" style="font-family: 'Poppins', sans-serif;">
+                    Hikvision Dubai - CCTV & IP Camera Distributor in Dubai & UAE
+                </h1>
+                
+                <!-- Full content for extra-large screens (xl and above) -->
+                <p class="text-gray-700 text-md leading-relaxed mb-8 animate-fade-in text-justify hidden xl:block" style="font-family: 'Poppins', sans-serif;">
+                   Hikvision Dubai is your trusted source for advanced surveillance systems and security solutions across Dubai and the UAE. We offer a wide range of Hikvision products, including CCTV cameras, IP cameras, and ColorVu technology for clear, vibrant images even in low light. Ideal for homes, offices, and industrial sites, our WiFi-enabled cameras provide seamless remote monitoring and reliable performance. Features like DarkFighter, TandemVu, and AcuSense ensure smart, efficient security tailored to your needs. At Hikvision Dubai, we combine cutting-edge technology with competitive pricing, delivering high-quality surveillance solutions for residential and commercial properties. Upgrade your security today with Hikvision.
+                   </p> 
+
+                <!-- Reduced content for large screens and below -->
+                <p class="text-gray-700 text-md leading-relaxed mb-8 animate-fade-in text-justify xl:hidden" style="font-family: 'Poppins', sans-serif;">
+                     Hikvision Dubai is your trusted source for advanced surveillance and security solutions. We offer CCTV cameras, IP cameras, and ColorVu technology for clear images even in low light. With DarkFighter, TandemVu, and AcuSense features, our cameras deliver smart security for homes, offices, and industrial sites. Enjoy competitive pricing and reliable, high-quality surveillance solutions across Dubai and the UAE.
+</p>
+                <a href="/contact" class="inline-flex items-center gap-2 bg-gradient-to-r from-[#32869f] to-[#4fb3d9] text-white px-6 py-3 rounded-full font-medium transition-all hover:shadow-xl hover:bg-opacity-90 group">
+                    <span class="text-sm">Get Free CCTV Quote</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Video Section (SEO-Optimized Embed) -->
+            <div class="lg:w-1/2 w-full animate-fade-in-right">
+                <div class="relative aspect-video rounded-xl overflow-hidden shadow-2xl">
+                    <iframe 
+                        class="absolute inset-0 w-full h-full"
+                        src="https://www.youtube.com/embed/MGjX7jfqMZA?rel=0&enablejsapi=1"
+                        title="Hikvision CCTV Cameras in Dubai - ColorVu & DarkFighter Demo"
+                        loading="lazy"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    @keyframes fadeInLeft {
+        0% { 
+            opacity: 0; 
+            transform: translateX(-30px);
+        }
+        100% { 
+            opacity: 1; 
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeInRight {
+        0% { 
+            opacity: 0; 
+            transform: translateX(30px);
+        }
+        100% { 
+            opacity: 1; 
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes bounceIn {
+        0% { 
+            opacity: 0; 
+            transform: scale(0.7);
+        }
+        50% { 
+            opacity: 1; 
+            transform: scale(1.03);
+        }
+        70% { 
+            transform: scale(0.97);
+        }
+        100% { 
+            transform: scale(1);
+        }
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 1.2s ease-out;
+    }
+
+    .animate-fade-in-left {
+        animation: fadeInLeft 1.2s ease-out;
+    }
+
+    .animate-fade-in-right {
+        animation: fadeInRight 1.2s ease-out;
+    }
+
+    .animate-bounce-in {
+        animation: bounceIn 1.2s ease-out;
+    }
+</style>

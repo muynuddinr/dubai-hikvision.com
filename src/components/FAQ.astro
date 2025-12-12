@@ -1,0 +1,163 @@
+---
+const subTitle: string = "Ask us anything about our brand and products, and get factual responses.";
+const makeId = (base: any, index: any) => `${base}${index + 1}`;
+export const faqs = [
+  {
+    heading: "Where can I purchase Hikvision products in the UAE and Dubai?",
+    content:
+      "You can purchase authentic Hikvision products from Dubai Hikvision, an wholesale distributor of Hikvision in the UAE and Dubai. We offer a wide range of security and surveillance solutions to meet your needs.",
+  },
+  {
+    heading: "What types of Hikvision products do you distribute?",
+    content:
+      "We distribute a comprehensive range of Hikvision products, including CCTV cameras, DVRs, NVRs, access control systems, intercoms, and video management software.",
+  },
+  {
+    heading: "Are your Hikvision products genuine and authentic?",
+    content:
+      "Yes, all Hikvision products offered by Dubai Hikvision are 100% genuine and authentic. As an Wholesale distributor, we ensure the highest quality standards and provide products directly from Hikvision.",
+  },
+  {
+    heading: "Do you offer installation services for Hikvision products?",
+    content:
+      "Yes, we provide installation services directly, we can recommend trusted partners who specialize in the installation and setup of Hikvision products. Feel free to contact us for referrals.",
+  },
+  {
+    heading: "What kind of support do you offer for Hikvision products?",
+    content:
+      "We offer comprehensive technical support and assistance for Hikvision products purchased through Dubai Hikvision. Our team of experts is available to help you with product inquiries, troubleshooting, and guidance.",
+  },
+  {
+    heading: "How can I become a reseller or partner with Dubai Hikvision for Hikvision products?",
+    content:
+      "If you're interested in becoming a reseller or partner with Dubai Hikvision, please contact us to discuss partnership opportunities and requirements. We welcome collaborations with businesses looking to distribute Hikvision products in the UAE and Dubai.",
+  },
+];
+
+
+---  
+<section class="pb-20 pt-10 bg-gradient-to-b from-blue-50 to-white pt-8">
+  <div class="container mx-auto max-w-6xl px-4">
+    <div class="text-center mb-6">
+      <h2 id="faq-toggle-trigger" class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-cyan-400 bg-clip-text text-transparent cursor-pointer" style="line-height:1.2;">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        {subTitle}
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <!-- FAQ Section (12 columns) -->
+      <div class="lg:col-span-12">
+        <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-100">
+          {
+            faqs.map((question, i) => {
+              let id = makeId("faq-item-", i);
+              
+              return (
+                <div class={`faq-item ${i > 0 ? 'border-t border-gray-100' : ''} ${i >= 3 ? 'hidden extended-faq' : ''}`} id={id}>
+                  <button
+                    class="faq-toggle w-full flex items-center justify-between p-6 group transition-all duration-200 hover:bg-blue-50 focus:outline-none"
+                  >
+                    <span class="font-medium text-lg text-left text-gray-800 group-hover:text-cyan-600">
+                      {question.heading}
+                    </span>
+                    <span class="faq-icon ml-4 flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 transition-transform duration-300">
+                      <!-- Down arrow (default) -->
+                      <svg class="down-icon w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                      <svg class="up-icon w-5 h-5 hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="18 15 12 9 6 15"></polyline>
+                      </svg>
+                    </span>
+                  </button>
+                  <div class="faq-content hidden px-6 pb-6 pt-2 text-gray-600 bg-white">
+                    <div class="p-4 bg-gray-50 rounded-lg border-l-4 border-blue-500">
+                      <p>{question.content}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .faq-toggle:focus {
+    outline: none;
+  }
+  /* Show all questions in mobile view */
+  @media (max-width: 1023px) {
+    .extended-faq {
+      display: block !important;
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqToggleTrigger = document.getElementById('faq-toggle-trigger');
+    const extendedFaqs = document.querySelectorAll('.extended-faq');
+    let isExtendedVisible = false;
+
+    // Only apply hover effect on desktop
+    if (window.innerWidth >= 1024) {
+      faqToggleTrigger.addEventListener('mouseenter', function() {
+        isExtendedVisible = !isExtendedVisible;
+        extendedFaqs.forEach(function(faq) {
+          faq.classList.toggle('hidden', !isExtendedVisible);
+        });
+      });
+    }
+
+    // FAQ accordion functionality for answers
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(function(item) {
+      const toggle = item.querySelector('.faq-toggle');
+      const content = item.querySelector('.faq-content');
+      const downIcon = toggle.querySelector('.down-icon');
+      const upIcon = toggle.querySelector('.up-icon');
+      
+      toggle.addEventListener('click', function() {
+        const isOpen = item.classList.contains('active');
+        
+        // Close all other FAQ items (only on desktop)
+        if (window.innerWidth >= 1024) {
+          faqItems.forEach(function(faqItem) {
+            if (faqItem !== item) {
+              faqItem.classList.remove('active');
+              const faqContent = faqItem.querySelector('.faq-content');
+              if (faqContent) {
+                faqContent.style.display = 'none';
+              }
+              
+              const itemDownIcon = faqItem.querySelector('.down-icon');
+              const itemUpIcon = faqItem.querySelector('.up-icon');
+              if (itemDownIcon && itemUpIcon) {
+                itemDownIcon.classList.remove('hidden');
+                itemUpIcon.classList.add('hidden');
+              }
+            }
+          });
+        }
+        
+        // Toggle the clicked FAQ item
+        item.classList.toggle('active');
+        if (content) {
+          content.style.display = item.classList.contains('active') ? 'block' : 'none';
+        }
+        
+        // Toggle icons
+        if (downIcon && upIcon) {
+          downIcon.classList.toggle('hidden', item.classList.contains('active'));
+          upIcon.classList.toggle('hidden', !item.classList.contains('active'));
+        }
+      });
+    });
+  });
+</script>
